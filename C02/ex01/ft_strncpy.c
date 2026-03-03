@@ -10,25 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	unsigned int	aux;
-
-	aux = 0;
-	while (aux <= n)
+	while (n--)
 	{
-		dest[aux] = src[aux]; 
-		aux++;
+		dest[n] = src[n];
 	}
-	dest[aux + 1] = '\n';
 	return (dest);
 }
-#include <stdio.h>
-int	main(void)
-{
-	char	dest[15];
-	char	src[] = "luriana";
 
-	printf("%s", ft_strncpy(dest, src, 3));
-	return (0);
-}
+// #include <stdio.h>
+// #include <string.h>
+// int	main(void)
+// {
+// 	char	dest[] = "mar";
+// 	char	src[] = "luriana";
+
+// 	printf("%s\n", ft_strncpy(dest, src, 0));
+// 	printf("%s", strncpy(dest, src, 0));
+// 	return (0);
+// }
