@@ -17,22 +17,23 @@ int	ft_str_is_numeric(char *src)
 	aux = 0;
 	while (src[aux] != '\0')
 	{
-		if (src[aux] < '0' && src[aux] > '9')
+		if (src[aux] >= '0' && src[aux] <= '9')
+			aux++;
+		else
 			return (0);
-		aux++;
 	}
 	return (1);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	char	src[] = "123";
-	char	src2[] = "123a";
-	char	src3[] = "123 a";
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	src[] = "123";
+// 	char	src2[] = "123a";
+// 	char	src3[] = " 123a";
 
-	printf("%d\n", ft_str_is_numeric(src));
-	printf("%d\n");
-	printf("");
-	return(0);
-}
+// 	printf("%d\n", ft_str_is_numeric(src));
+// 	printf("%d\n", ft_str_is_numeric(src2));
+// 	printf("%d\n", ft_str_is_numeric(src3));
+// 	return(0);
+// }
