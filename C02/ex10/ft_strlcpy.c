@@ -15,12 +15,13 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	unsigned int	aux;
 
 	aux = 0;
-	while (src[aux] != '\0' && aux < size)
+	while (src[aux] != '\0' || aux < size)
 	{
 		dest[aux] = src[aux];
 		aux++;
 	}
 	dest[aux + 1] = '\0';
+	aux++;
 	return (aux);
 }
 
@@ -30,8 +31,10 @@ int	main(void)
 {
 	unsigned int	num = 10;
     char			src[] = "World!";
+    char			src2[] = "Hello World!";
     char			dest[10];
 
-    printf("%u\n", ft_strlcpy(dest, src, num));
+    printf("Should be 6, got %u\n", ft_strlcpy(dest, src, num));
+    printf("Should be 13, got %u\n", ft_strlcpy(dest, src2, num));
 	return (0);
 }
