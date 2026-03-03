@@ -16,12 +16,14 @@ char	*ft_strcpy(char *dest, char *src)
 	return (dest);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	char	*dest = "Mar";
-	char	*src = "MARIIana";
+// #include <stdio.h>
+// #include <string.h>
+// int	main(void)
+// {
+// 	char	dest[10];
+// 	char	src[] = "MARIIana";
 
-	printf("%s", ft_strcpy(dest, src));
-	return (0);
-}
+// 	printf("%s\n", ft_strcpy(dest, src));
+// 	printf("%s", strcpy(dest, src));
+// 	return (0);
+// }
