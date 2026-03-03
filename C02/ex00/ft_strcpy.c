@@ -12,21 +12,7 @@
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	int	str_size;
-	int	dest_index;
-
-	str_size = 0;
-	while (src[str_size] != '\0')
-	{
-		str_size++;
-	}
-	dest_index = 0;
-	while (dest_index < str_size)
-	{
-		if (dest_index == str_size)
-			dest[dest_index] = '\0';
-		dest_index++;
-	}
+	dest = src;
 	return (dest);
 }
 
