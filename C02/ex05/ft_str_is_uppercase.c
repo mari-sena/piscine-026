@@ -12,23 +12,32 @@
 
 int	ft_str_is_uppercase(char *str)
 {
-	while (*str != '\0')
+	int	aux;
+
+	aux = 0;
+	if (str[aux] == '\0')
+		return (1);
+	while (str[aux] != '\0')
 	{
-		if ((*str < 'A' || *str > 'Z')
-			|| *str != 32)
-		{
+		if ((str[aux] >= 'A' && str[aux] <= 'Z'))
+			aux++;
+		else
 			return (0);
-		}
-		str++;
 	}
 	return (1);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	char	str[] = "AD cd";
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	str[] = "abc";
+// 	char	str1[] = " abc";
+// 	char	str2[] = "";
+// 	char	str3[] = "ASD";
 
-	printf("%d", ft_str_is_uppercase(str));
-	return (0);
-}
+// 	printf("%d\n", ft_str_is_uppercase(str));
+// 	printf("%d\n", ft_str_is_uppercase(str1));
+// 	printf("%d\n", ft_str_is_uppercase(str2));
+// 	printf("%d", ft_str_is_uppercase(str3));
+// 	return (0);
+// }
