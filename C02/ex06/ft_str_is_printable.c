@@ -12,28 +12,32 @@
 
 int	ft_str_is_printable(char *str)
 {
-	int	str_size;
+	int	aux;
 
-	str_size = 0;
-	while (*str != '\0')
+	aux = 0;
+	if (str[aux] == '\0')
+		return (1);
+	while (str[aux] != '\0')
 	{
-		str_size++;
-		if (*str > 31)
-			str++;
+		if (str[aux] > 31)
+			aux++;
 		else
 			return (0);
 	}
-	if (str[str_size] != '\0' && str[str_size + 1] == '\0')
-		return (1);
-	else
-		return (0);
+	return (1);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	char	str[] = "s\0s";
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	str[] = "1";
+// 	char	str2[] = "a";
+// 	char	str3[] = "\x02";
+// 	char	str4[] = "";
 
-	printf("%d", ft_str_is_printable(str));
-	return (0);
-}
+// 	printf("%d\n", ft_str_is_printable(str));
+// 	printf("%d\n", ft_str_is_printable(str2));
+// 	printf("%d\n", ft_str_is_printable(str3));
+// 	printf("%d\n", ft_str_is_printable(str4));
+// 	return (0);
+// }
