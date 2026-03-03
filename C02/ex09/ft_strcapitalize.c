@@ -15,16 +15,20 @@ char    *ft_strcapitalize(char *str)
     int aux;
 
     aux = 0;
-    while (str[aux])
+    while (str[aux] != '\0')
     {
         if ((aux == 0
             || str[aux - 1] == ' '
             || str[aux - 1] == '+'
             || str[aux - 1] == '-')
             && (str[aux] >= 'a' && str[aux] <= 'z'))
-            str[aux] = str[aux] - 32;
-        if ((str[aux] >= 'A' && str[aux] <= 'Z') && (str[aux - 1] ))
-            str[aux] = str[aux] + 32;
+			str[aux] = str[aux] - 32;
+		else if ((aux != 0
+            && str[aux - 1] != ' '
+            && str[aux - 1] != '+'
+            && str[aux - 1] != '-')
+			&& (str[aux] >= 'A' && str[aux] <= 'Z'))
+			str[aux] = str[aux] + 32;
         aux++;
     }
     return (str);
@@ -35,8 +39,12 @@ int main(void)
 {
     char    str[] = "hi, how are you? 42words forty-two; fifty+and+one";
     char    str1[] = "HELLO HELLO";
+    char    str2[] = "hELLO hello";
+    char    str3[] = "hELLO+Hello";
 
     printf("%s\n", ft_strcapitalize(str));
     printf("%s\n", ft_strcapitalize(str1));
+    printf("%s\n", ft_strcapitalize(str2));
+    printf("%s\n", ft_strcapitalize(str3));
     return (0);
 }
