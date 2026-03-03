@@ -15,23 +15,29 @@ int	ft_str_is_lowercase(char *str)
 	int	aux;
 
 	aux = 0;
+	if (str[aux] == '\0')
+		return (1);
 	while (str[aux] != '\0')
 	{
-		if ((str[aux] < 'a' && str[aux] > 'z')
-			&& str[aux] != 32)
-		{
+		if ((str[aux] >= 'a' && str[aux] <= 'z'))
+			aux++;
+		else
 			return (0);
-		}
-		aux++;
 	}
 	return (1);
 }
 
-#include <stdio.h>
-int	main(void)
-{
-	char	str[] = "a bc";
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	char	str[] = "abc";
+// 	char	str1[] = " abc";
+// 	char	str2[] = "";
+// 	char	str3[] = "ASD";
 
-	printf("%d", ft_str_is_lowercase(str));
-	return (0);
-}
+// 	printf("%d\n", ft_str_is_lowercase(str));
+// 	printf("%d\n", ft_str_is_lowercase(str1));
+// 	printf("%d\n", ft_str_is_lowercase(str2));
+// 	printf("%d", ft_str_is_lowercase(str3));
+// 	return (0);
+// }
