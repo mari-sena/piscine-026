@@ -22,13 +22,13 @@ char    *ft_strcapitalize(char *str)
             || str[aux - 1] == '+'
             || str[aux - 1] == '-')
             && (str[aux] >= 'a' && str[aux] <= 'z'))
-			str[aux] = str[aux] - 32;
+			str[aux] -= 32;
 		else if ((aux != 0
             && str[aux - 1] != ' '
             && str[aux - 1] != '+'
             && str[aux - 1] != '-')
 			&& (str[aux] >= 'A' && str[aux] <= 'Z'))
-			str[aux] = str[aux] + 32;
+			str[aux] += 32;
         aux++;
     }
     return (str);
@@ -37,7 +37,7 @@ char    *ft_strcapitalize(char *str)
 #include <stdio.h>
 int main(void)
 {
-    char    str[] = "hi, how are you? 42words forty-two; fifty+and+one";
+    char    str[] = "hi, h_ow are ''you? 42words forty-two; fifty+and+one";
     char    str1[] = "HELLO HELLO";
     char    str2[] = "hELLO hello";
     char    str3[] = "hELLO+Hello";
