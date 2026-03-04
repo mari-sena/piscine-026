@@ -13,9 +13,18 @@
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	while (n--)
+	unsigned int	aux;
+
+	aux = 0;
+	while (src[aux] != '\0' && aux < n)
 	{
-		dest[n] = src[n];
+		dest[aux] = src[aux];
+		aux++;
+	}
+	while (aux < n)
+	{
+		dest[aux] = '\0';
+		aux++;
 	}
 	return (dest);
 }
