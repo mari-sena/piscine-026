@@ -10,41 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char    *ft_strcapitalize(char *str)
+char	*ft_strcapitalize(char *str)
 {
-    int aux;
+	int	aux;
 
-    aux = 0;
-    while (str[aux] != '\0')
-    {
-        if ((aux == 0
-            || str[aux - 1] == ' '
-            || str[aux - 1] == '+'
-            || str[aux - 1] == '-')
-            && (str[aux] >= 'a' && str[aux] <= 'z'))
-			str[aux] -= 32;
-		else if ((aux != 0
-            && str[aux - 1] != ' '
-            && str[aux - 1] != '+'
-            && str[aux - 1] != '-')
+	aux = 0;
+	while (str[aux])
+	{
+		if ((aux == 0
+				|| !((str[aux - 1] >= 'a' && str[aux - 1] <= 'z')
+					|| (str[aux - 1] >= '0' && str[aux - 1] <= '9')
+					|| (str[aux - 1] >= 'A' && str[aux - 1] <= 'Z')))
+			&& (str[aux] >= 'a' && str[aux] <= 'z'))
+				str[aux] -= 32;
+		else if (((str[aux - 1] >= 'a' && str[aux - 1] <= 'z')
+				|| (str[aux - 1] >= '0' && str[aux - 1] <= '9')
+				|| (str[aux - 1] >= 'A' && str[aux - 1] <= 'Z'))
 			&& (str[aux] >= 'A' && str[aux] <= 'Z'))
 			str[aux] += 32;
-        aux++;
-    }
-    return (str);
+		aux++;
+	}
+	return (str);
 }
 
-#include <stdio.h>
-int main(void)
-{
-    char    str[] = "hi, h_ow are ''you? 42words forty-two; fifty+and+one";
-    char    str1[] = "HELLO HELLO";
-    char    str2[] = "hELLO hello";
-    char    str3[] = "hELLO+Hello";
+// #include <stdio.h>
+// int main(void)
+// {
+//     char    str[] = "hi, h_ow are ''you? 42words forty-two; fifty+and+one";
+//     char    str1[] = "HELLO HELLO";
+//     char    str2[] = "hELLO hello";
+//     char    str3[] = "hELLO+Hello";
 
-    printf("%s\n", ft_strcapitalize(str));
-    printf("%s\n", ft_strcapitalize(str1));
-    printf("%s\n", ft_strcapitalize(str2));
-    printf("%s\n", ft_strcapitalize(str3));
-    return (0);
-}
+//     printf("%s\n", ft_strcapitalize(str));
+//     printf("%s\n", ft_strcapitalize(str1));
+//     printf("%s\n", ft_strcapitalize(str2));
+//     printf("%s\n", ft_strcapitalize(str3));
+//     return (0);
+// }
