@@ -10,36 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+char    *ft_strstr(char *str, char *to_find)
 {
-	int	aux;
-	int	aux_equal;
+	int	aux_src;
+	int	aux_find;
 
-	aux = 0;
-	while (str[aux] != '\0')
+	aux_src = 0;
+	if (to_find[0] == '\0')
+			return (str);
+	while (str[aux_src] != '\0')
 	{
-		aux_equal = aux;
-		while ((str[aux_equal] == to_find[aux_equal])
-			&& str[aux_equal] != '\0'
-			&& to_find[aux_equal] != '\0')
+		aux_find = 0;
+		while (str[aux_src + aux_find] == to_find[aux_find]
+			&& to_find[aux_find] != '\0')
 		{
-			aux_equal++;
+			aux_find++;
 		}
-		aux++;
+		str[0] = '\0';
+		if (to_find[aux_find] == '\0')
+			return (&str[aux_src]);
+		aux_src++;
 	}
-	return (to_find);
+	return (0);
 }
 
 #include <stdio.h>
 #include <string.h>
-int	main(void)
+int    main(void)
 {
-	char	str[] = "Hello World!";
-	char	to_find[] = "World";
-	char	str2[] = "Hello World!!";
-	char	to_find2[] = "e";
+    char    str[] = "Hello World!!";
+    char    to_find[] = "World";
+    char    str2[] = "Hello World!!";
+    char    to_find2[] = "World";
 
-	printf("(ft_strstr): %s\n", ft_strstr(str, to_find));
-	printf("(strstr): %s\n", strstr(str2, to_find2));
-	return (0);
+    printf("(ft_strstr): %s\n", ft_strstr(str, to_find));
+    printf("(strstr): %s\n", strstr(str2, to_find2));
+    return (0);
 }
