@@ -74,6 +74,11 @@ int main(void)
     char s13[] = "Hello";
     char s14[] = "He";
     printf("Hello He = %d", ft_strcmp(s13, s14));
-    printf(" %d\n", strcmp(s13, s14));
+    printf(" %d\n\n", strcmp(s13, s14));
+
+    char s15[] = "Hello";
+    char s16[] = "World";
+    printf("Hello World = %d", ft_strcmp(s15, s16));
+    printf(" %d\n\n", strcmp(s15, s16));
     return (0);
 }
