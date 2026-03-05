@@ -12,10 +12,17 @@
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	dest = src;
+	int	aux;
+
+	aux = 0;
+	while (src[aux] != '\0')
+	{
+		dest[aux] = src[aux];
+		aux++;
+	}
+	dest[aux] = '\0';
 	return (dest);
 }
-
 // #include <stdio.h>
 // #include <string.h>
 // int	main(void)
