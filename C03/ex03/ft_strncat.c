@@ -1,49 +1,89 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariafer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/05 10:27:28 by mariafer          #+#    #+#             */
-/*   Updated: 2026/03/05 10:29:27 by mariafer         ###   ########.fr       */
+/*   Created: 2026/03/03 14:28:06 by mariafer          #+#    #+#             */
+/*   Updated: 2026/03/03 14:28:11 by mariafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+int ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	unsigned int	aux_dest;
-	unsigned int	aux_src;
+    unsigned int aux;
 
-	aux_dest = 0;
-	aux_src = 0;
-	while (dest[aux_dest] != '\0')
-	{
-		dest[aux_dest] = dest[aux_dest];
-		aux_dest++;
-	}
-	while (src[aux_src] != '\0' && aux_src < nb)
-	{
-		dest[aux_dest] = src[aux_src];
-		aux_src++;
-		aux_dest++;
-	}
-	dest[aux_dest] = '\0';
-	return (dest);
+    aux = 0;
+    if (n == 0)
+        return (0);
+    while ((s1[aux] != '\0' && (s1[aux] == s2[aux]) && aux < (n - 1)))
+        aux++;
+    return (s1[aux] - s2[aux]);
 }
 
 // #include <stdio.h>
 // #include <string.h>
-// int	main(void)
+// int main(void)
 // {
-// 	unsigned int	nb = 2;
-// 	char	dest[] = "Hello ";
-// 	char	src[] = "World!";
-// 	unsigned int	nb2 = 2;
-// 	char	dest2[] = "Hello ";
-// 	char	src2[] = "World!";
+//     unsigned int    n1 = 2;
+//     char			s1[] = "He";
+//     char			s2[] = "He";
+//     printf("He He = %d", ft_strncmp(s1, s2, n1));
+//     printf(" %d\n\n", strncmp(s1, s2, n1));
 
-// 	printf("(ft_strncat): %s\n", ft_strncat(dest, src, nb));
-// 	printf("(strncat): %s\n", strncat(dest2, src2, nb2));
-// 	return (0);
+//     unsigned int    n2 = 2;
+//     char			s3[] = "He";
+//     char			s4[] = "Ho";
+//     printf("He Ho = %d", ft_strncmp(s3, s4, n2));
+//     printf(" %d\n\n", strncmp(s3, s4, n2));
+
+//     unsigned int    n3 = 2;
+//     char			s5[] = "Ho";
+//     char			s6[] = "He";
+//     printf("Ho He = %d", ft_strncmp(s5, s6, n3));
+//     printf(" %d\n\n", strncmp(s5, s6, n3));
+
+//     unsigned int    n4 = 2;
+//     char			s7[] = "He";
+//     char			s8[] = "Hel";
+//     printf("He Hel = %d", ft_strncmp(s7, s8, n4));
+//     printf(" %d\n\n", strncmp(s7, s8, n4));
+
+//     unsigned int    n5 = 2;
+//     char			s9[] = "Hel";
+//     char			s10[] = "He";
+//     printf("Hel He = %d", ft_strncmp(s9, s10, n5));
+//     printf(" %d\n\n", strncmp(s9, s10, n5));
+
+//     unsigned int    n6 = 2;
+//     char			s11[] = "Hell";
+//     char			s12[] = "He";
+//     printf("Hell He = %d", ft_strncmp(s11, s12, n6));
+//     printf(" %d\n\n", strncmp(s11, s12, n6));
+
+//     unsigned int    n7 = 2;
+//     char			s13[] = "Hello";
+//     char			s14[] = "He";
+//     printf("Hello He = %d", ft_strncmp(s13, s14, n7));
+//     printf(" %d\n\n", strncmp(s13, s14, n7));
+
+//     unsigned int    n8 = 2;
+//     char			s15[] = "Hello";
+//     char			s16[] = "World";
+//     printf("Hello World = %d", ft_strncmp(s15, s16, n8));
+//     printf(" %d\n\n", strncmp(s15, s16, n8));
+
+//     unsigned int    n9 = 0;
+//     char			s17[] = "";
+//     char			s18[] = "Hello";
+//     printf("'' Hello = %d", ft_strncmp(s17, s18, n9));
+//     printf(" %d\n\n", strncmp(s17, s18, n9));
+
+//     unsigned int    n10 = 0;
+//     char			s19[] = "Hello";
+//     char			s20[] = "";
+//     printf("Hello '' = %d", ft_strncmp(s19, s20, n10));
+//     printf(" %d\n", strncmp(s19, s20, n10));
+//     return (0);
 // }
