@@ -23,7 +23,7 @@ int	ft_fibonacci(int index)
 		return (-1);
 	if (index == 0)
 		return (0);
-	while (index >= 0)
+	while (index > 0)
 	{
 		temp = result;
 		result = temp + next;
@@ -39,7 +39,7 @@ int	ft_fibonacci(int index)
 // {
 // 	int	index;
 
-// 	index = 5;
+// 	index = 6;
 // 	// ft_fibonacci(index);
 // 	printf("%d\n", ft_fibonacci(index));
 // 	return (0);
