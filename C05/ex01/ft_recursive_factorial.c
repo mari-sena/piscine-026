@@ -10,31 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_factorial(int *nb, int result)
+int	ft_recursive_factorial(int nb)
 {
-	while (nb > 0)
-	{
-		result *= *nb;
-		*nb = *nb - 1;
-	}
-	return (result);
-}
-
-int ft_recursive_factorial(int nb)
-{
-	int	result;
-
-	result = 1;
 	if (nb < 0)
 		return (0);
-	
-	result = ft_factorial(&nb, result);
-	return (result);
+	if (nb == 0)
+		return (1);
+	if (nb == 1)
+		return (1);
+	return (nb * ft_recursive_factorial(nb - 1));
 }
 
-#include <stdio.h>
-int main(void)
-{
-    ft_recursive_factorial(0);
-    return (0);
-}
+// #include <stdio.h>
+// int main(void)
+// {
+// 	int	nb = 6;
+//     printf("%d", ft_recursive_factorial(nb));
+//     return (0);
+// }
