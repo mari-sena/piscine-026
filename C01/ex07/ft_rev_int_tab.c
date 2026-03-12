@@ -10,47 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 void	ft_rev_int_tab(int *tab, int size)
 {
-	int		ref_beggning;
-	int		ref_last;
+	int	index;
+	int	temp;
 
-	ref_beggning = 0;
-	ref_last = size - 1;
-	while (ref_beggning <= size - 1)
+	index = 0;
+	while (index < (size / 2))
 	{
-		tab[ref_beggning] = tab[ref_last];
-		ref_beggning++;
-		ref_last--;
+		temp = tab[index];
+		tab[index] = tab[size - 1];
+		tab[size - 1] = temp;
+		index++;
 	}
-	// ref_beggning = 0;
-	// while (ref_beggning <= size - 1)
-	// {
-	// 	tab[ref_beggning] = arr_ref_beggning[ref_beggning];
-	// 	ref_beggning++;
-	// 	ref_last--;
-	// }
 }
 
-int main(void)
-{
-	int	size = 6;
-	int num[] = {1, 2, 3, 4, 5, 6};
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	int	tab[] = {3, 2, 1};
+// 	int	size = 3;
+// 	int	index = 0;
 
-    printf("%d\n", num[0]);
-    printf("%d\n", num[1]);
-    printf("%d\n", num[2]);
-    printf("%d\n", num[3]);
-    printf("%d\n", num[4]);
-    printf("%d\n\n", num[5]);
-    ft_rev_int_tab(num, size);
-    printf("%d\n", num[0]);
-    printf("%d\n", num[1]);
-	printf("%d\n", num[2]);
-	printf("%d\n", num[3]);
-    printf("%d\n", num[4]);
-    printf("%d\n", num[5]);
-    return (0);
-}
+// 	printf("Antes: ");
+// 	while (index < size)
+// 		printf("%d ", tab[index++]);
+// 	ft_rev_int_tab(tab, size);
+// 	index = 0;
+// 	printf("\nDepois: ");
+// 	while (index < size)
+// 		printf("%d ", tab[index++]);
+// 	return (0);
+// }
