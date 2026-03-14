@@ -40,7 +40,7 @@ int	ft_baby_atoi(char *str)
 struct s_dict
 {
 	int		key;
-	char	translation;
+	char	*translation;
 };
 
 #include <stdio.h>
@@ -48,41 +48,47 @@ void	ft_dict_sanitize(char *dict_values)
 {
 	int				index;
 	int				index_keys;
-	int				index_values;
 	int				index_translation;
-	struct s_dict	translations[9];
+	int				index_dict_loop;
+	struct s_dict	translations[5000]; // ARRUME MEU TAMANHO
 
 	index = 0;
+	index_keys = 0;
 	index_translation = 0;
 	while (dict_values[index] != '\0')
 	{
-		index_keys = index;
-		while ((dict_values[index_keys] >= '0')
-			&& (dict_values[index_keys] <= '9'))
+		if (dict_values[index] != ' ')
 		{
-			printf("%c\n", dict_values[index_keys]);
-			translations[index_translation].key
-				= ft_baby_atoi(&dict_values[index_keys]);
-			// printf("%d\n", translations[index_translation].key);
-			index_keys++;
-			index_translation++;
-		}
-		if (dict_values[index_values] == ':')
-		{
-			index_values = index + 1;
-			while (((dict_values[index_values] > 32)
-					&& (dict_values[index_values] < '0'))
-				&& ((dict_values[index_values] > '9')
-					&& (dict_values[index_values] < 127)))
+			index_dict_loop = index;
+			while ((dict_values[index_dict_loop] >= '0')
+				&& (dict_values[index_dict_loop] <= '9'))
 			{
-				translations[index].translation = dict_values[index_values];
-				index_values++;
+				// printf("%c\n", dict_values[index_dict_loop]);
+				translations[index_keys].key
+					= ft_baby_atoi(&dict_values[index_dict_loop]);
+				// printf("%d\n", translations[index_keys].key);
+				index_dict_loop++;
 			}
+			if (dict_values[index + 1] == ':')
+				index_keys++;
+			index_dict_loop = index;
+			while (((dict_values[index_dict_loop] > 33)
+				&& (!((dict_values[index_dict_loop] >= '0')
+					&& (dict_values[index_dict_loop] <= '9')))
+				&& (dict_values[index_dict_loop] != ':')))
+			{
+				// printf("%c\n", dict_values[index_dict_loop]);
+				translations[index_translation].translation = &dict_values[index_dict_loop];
+				index_dict_loop++;
+			}
+			if ((dict_values[index + 1] >= '0')
+				&& (dict_values[index + 1] <= '9'))
+				index_translation++;
 		}
 		index++;
 	}
-	// printf("%d\n", translations[0].key);
-	// printf("%c", translations[0].translation);
+	// printf("%d\n", translations[1].key);
+	printf("%s", translations[0].translation);
 }
 
 int	main(int argc, char *argv[])
