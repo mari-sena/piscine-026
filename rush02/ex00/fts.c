@@ -51,18 +51,11 @@ int	ft_is_valid_number(char *nb)
 	return (0);
 }
 
-void	ft_read_dict(char *dict_name, char *dict_values)
+void	ft_read_dict(char *dict_name)
 {
-	int		file;
-	int		bytes;
-
-	file = open(dict_name, O_RDONLY);
-	bytes = read(file, dict_values, 695);
-	if (file != -1)
-	{
-		// 					ME REMOVA  \\//
-		// Imprime o conteudo do dict   \/
-		// write(1, dict_values, bytes);
-		close(file);
-	}
+	int		dict_file;
+	
+	dict_file = open(dict_name, O_RDWR);
+	if (dict_file != -1)
+		close(dict_file);
 }
