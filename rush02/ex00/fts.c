@@ -12,17 +12,6 @@
 
 #include <fcntl.h>
 #include <unistd.h>
-#include <stdlib.h>
-
-int	ft_strlen(char *str)
-{
-	int	aux;
-
-	aux = 0;
-	while (str[aux])
-		aux++;
-	return (aux);
-}
 
 void	ft_def_args(char **nb, int argc, char *argv[], char **dict_name)
 {
@@ -90,26 +79,7 @@ int	ft_baby_atoi(char *str)
 	return (result);
 }
 
-char	*ft_str_range(char *start, char *end)
-{
-	int		index;
-	char	*dest;
-
-	dest = (char *)malloc((end - start) + 1);
-	if (!dest)
-		return (NULL);
-	index = 0;
-	while (start < end)
-	{
-		dest[index] = *start;
-		start++;
-		index++;
-	}
-	dest[index] = '\0';
-	return (dest);
-}
-
-int		ft_is_space(char c)
+int	ft_is_space(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n'
 		|| c == '\v' || c == '\f' || c == '\r');
