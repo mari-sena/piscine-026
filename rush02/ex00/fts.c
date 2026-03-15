@@ -13,6 +13,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+int		ft_is_space(char c);
+
 void	ft_def_args(char **nb, int argc, char *argv[], char **dict_name)
 {
 	if (argc == 2)
@@ -79,8 +81,20 @@ int	ft_baby_atoi(char *str)
 	return (result);
 }
 
-int	ft_is_space(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\v' || c == '\f' || c == '\r');
-}
+// int	fc_dict_count(char *dict_values)
+// {
+// 	int	index;
+// 	int	dict_bytes;
+
+// 	index = 0;
+// 	dict_bytes = 0;
+// 	while (dict_values[index] != '\0')
+// 	{
+// 		while (ft_is_space(dict_values[index]))
+// 			index++;
+// 		if (dict_values[index] >= '0' && dict_values[index] <= '9')
+// 		{
+// 			dict_bytes++;
+// 		}
+// 	}
+// }
