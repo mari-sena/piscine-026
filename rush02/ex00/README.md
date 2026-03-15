@@ -20,3 +20,11 @@ Preenche a variavel *nb* caso receba 1 parametro e caso recebemos 2 parametros o
 
 ## ft_strlen
 Conta quantas caracteres tem dentro da string passada
+
+# Documentações de apoio
+## open
+http://en.wikibooks.org/wiki/C_Programming/POSIX_Reference/unistd.h/open
+
+## close
+"The function returns zero to indicate the file was closed successfully"
+https://en.wikibooks.org/wiki/C_Programming/POSIX_Reference/unistd.h/close
