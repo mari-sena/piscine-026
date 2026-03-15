@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-FILES = main.c fts.c
+FILES = *.c
 OUT_EXE = rush-02
 
 all: $(OUT_EXE)
