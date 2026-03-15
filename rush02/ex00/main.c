@@ -28,6 +28,8 @@ int		ft_read_dict(char *dict_name, char *dict_values, int size);
 void	ft_def_args(char **nb, int argc, char *argv[], char **dict_name);
 char	*ft_str_range(char *start, char *end);
 
+// [] Validar se o novo dict tem no minimo 41 keys
+// [] 
 int	ft_dict_sanitize(char *dict_values, struct s_dict *translations)
 {
 	int	index;
@@ -63,6 +65,11 @@ int	ft_dict_sanitize(char *dict_values, struct s_dict *translations)
 			index_dict++;
 		}
 	}
+	if (index_dict < 41)
+	{
+		write(1, "Dict Error\n", 11);
+		return (-1);
+	}
 	return (index_dict);
 }
 
@@ -86,7 +93,10 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (ft_read_dict(dict_name, dict_values, 5000))
 		return (0);
+	
 	translation_qty = ft_dict_sanitize(dict_values, translations);
+	if (translation_qty == -1)
+		return (0);
 	index = 0;
 	while (index < translation_qty)
 	{
