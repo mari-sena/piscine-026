@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.c                                               :+:      :+:    :+:   */
+/*   fts.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariafer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:11:57 by mariafer          #+#    #+#             */
-/*   Updated: 2026/03/13 16:11:59 by mariafer         ###   ########.fr       */
+/*   Updated: 2026/03/15 10:19:47 by mariafer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 int	ft_strlen(char *str)
 {
@@ -41,7 +42,7 @@ int	ft_is_valid_number(char *nb)
 	index = 0;
 	while (nb[index] != '\0')
 	{
-		if (nb[index] == '.')
+		if (nb[index] < '0' || nb[index] > '9')
 		{
 			write(1, "Error\n", 6);
 			return (1);
@@ -51,11 +52,66 @@ int	ft_is_valid_number(char *nb)
 	return (0);
 }
 
-void	ft_read_dict(char *dict_name)
+int	ft_read_dict(char *dict_name, char *dict_values, int size)
 {
 	int		dict_file;
-	
-	dict_file = open(dict_name, O_RDWR);
-	if (dict_file != -1)
-		close(dict_file);
+	int		bytes_to_read;
+
+	dict_file = open(dict_name, O_RDONLY);
+	if (dict_file == -1)
+	{
+		write(1, "Dict Error\n", 11);
+		return (1);
+	}
+	bytes_to_read = read(dict_file, dict_values, size - 1);
+	close(dict_file);
+	if (bytes_to_read < 0)
+	{
+		write(1, "Dict Error\n", 11);
+		return (1);
+	}
+	dict_values[bytes_to_read] = '\0';
+	return (0);
 }
+
+int	ft_baby_atoi(char *str)
+{
+	int	index;
+	int	result;
+
+	index = 0;
+	result = 0;
+	while (str[index] >= '0' && str[index] <= '9')
+	{
+		result *= 10;
+		result += (int)str[index] - 48;
+		index++;
+	}
+	return (result);
+}
+
+char	*ft_str_range(char *start, char *end)
+{
+	int		index;
+	char	*dest;
+
+	dest = (char *)malloc((end - start) + 1);
+	if (!dest)
+		return (NULL);
+	index = 0;
+	while (start < end)
+	{
+		dest[index] = *start;
+		start++;
+		index++;
+	}
+	dest[index] = '\0';
+	return (dest);
+}
+
+int		ft_is_space(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n'
+		|| c == '\v' || c == '\f' || c == '\r');
+}
+
