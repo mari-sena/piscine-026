@@ -19,7 +19,7 @@ void	ft_def_args(char **nb, int argc, char *argv[], char **dict_name);
 
 int		ft_is_valid_number(char *nb);
 
-void	ft_read_dict(char *dict_name, char *dict_values);
+void	ft_read_dict(char *dict_name);
 
 int	ft_baby_atoi(char *str)
 {
@@ -37,6 +37,25 @@ int	ft_baby_atoi(char *str)
 	return (result);
 }
 
+char	*ft_str_range(char *start, char *end)
+{
+	int		index;
+	char	*dest;
+
+	dest = (char *)malloc((end - start) + 1);
+	if (!dest)
+		return (NULL);
+	index = 0;
+	while (start < end)
+	{
+		dest[index] = *start;
+		start++;
+		index++;
+	}
+	dest[index] = '\0';
+	return (dest);
+}
+
 struct s_dict
 {
 	int		key;
@@ -47,48 +66,36 @@ struct s_dict
 void	ft_dict_sanitize(char *dict_values)
 {
 	int				index;
-	int				index_keys;
-	int				index_translation;
-	int				index_dict_loop;
+	int				index_dict;
+	int				index_start;
 	struct s_dict	translations[5000]; // ARRUME MEU TAMANHO
 
 	index = 0;
-	index_keys = 0;
-	index_translation = 0;
+	index_dict = 0;
+	index_start = 0;
 	while (dict_values[index] != '\0')
 	{
-		if (dict_values[index] != ' ')
+		if (dict_values[index] != ' ' || dict_values[index] != '\n')
 		{
-			index_dict_loop = index;
-			while ((dict_values[index_dict_loop] >= '0')
-				&& (dict_values[index_dict_loop] <= '9'))
-			{
-				// printf("%c\n", dict_values[index_dict_loop]);
-				translations[index_keys].key
-					= ft_baby_atoi(&dict_values[index_dict_loop]);
-				// printf("%d\n", translations[index_keys].key);
-				index_dict_loop++;
-			}
-			if (dict_values[index + 1] == ':')
-				index_keys++;
-			index_dict_loop = index;
-			while (((dict_values[index_dict_loop] > 33)
-				&& (!((dict_values[index_dict_loop] >= '0')
-					&& (dict_values[index_dict_loop] <= '9')))
-				&& (dict_values[index_dict_loop] != ':')))
-			{
-				// printf("%c\n", dict_values[index_dict_loop]);
-				translations[index_translation].translation = &dict_values[index_dict_loop];
-				index_dict_loop++;
-			}
-			if ((dict_values[index + 1] >= '0')
-				&& (dict_values[index + 1] <= '9'))
-				index_translation++;
+			index_start = index;
+			while ((dict_values[index] >= '0')
+				&& (dict_values[index] <= '9'))
+				index++;
+			translations[index_dict].key
+					= ft_baby_atoi(&dict_values[index_start]);
+			if (dict_values[index] == ':' && dict_values[index] == ' ')
+				index++;
+			index_start = index;
+			while (dict_values[index] != '\n' || dict_values[index] != '\0')
+				index++;
+			translations[index_dict].translation =
+				ft_str_range(&dict_values[index_start], &dict_values[index]);
+			index_dict++;
 		}
 		index++;
+		printf("%d\n", translations[1].key);
+		printf("%s\n", translations[0].translation);
 	}
-	// printf("%d\n", translations[1].key);
-	printf("%s", translations[0].translation);
 }
 
 int	main(int argc, char *argv[])
@@ -106,10 +113,7 @@ int	main(int argc, char *argv[])
 	ft_def_args(&nb, argc, argv, &dict_name);
 	if (ft_is_valid_number(nb))
 		return (0);
-	ft_read_dict(dict_name, dict_values);
+	ft_read_dict(dict_name);
 	ft_dict_sanitize(dict_values);
-	// 					ME REMOVA  \\//
-	// Imprime o conteudo o numer   \/
-	// write(1, nb, ft_strlen(nb));
 	return (0);
 }
