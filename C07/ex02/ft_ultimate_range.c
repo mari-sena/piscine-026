@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
+
 int ft_ultimate_range(int **range, int min, int max)
 {
     int size;
@@ -23,23 +23,25 @@ int ft_ultimate_range(int **range, int min, int max)
         return (0);
     }
     size = max - min;
-    // *range = (int *)malloc(sizeof(int) * size);
-    // range[size*4];//heap vs stack 
-    // https://www.geeksforgeeks.org/c/difference-between-int-a-and-int-a-in-c/
+    *range = (int *)malloc(sizeof(int) * size);
     if (!*range)
         return (-1);
     index = 0;
     while (index < size)
     {
-        *range[index] = index;
-        printf("%d\n", *range[index]);
+        (*range)[index] = min + 1;
         index++;
     }
-    return (index);
+    return (size);
 }
 
-int main(void)
-{
-    int *range;
-    ft_ultimate_range(&range, 0, 10);
-}
+// #include <stdio.h>
+// int main(void)
+// {
+//     int *range;
+//     printf("%d\n", ft_ultimate_range(&range, 0, 10));
+//     free(range);
+//     return (0);
+// }
+// range[size*4];//heap vs stack 
+// https://www.geeksforgeeks.org/c/difference-between-int-a-and-int-a-in-c/
