@@ -12,26 +12,31 @@
 
 #include <unistd.h>
 
-void     ft_print_params(char *params)
+void	ft_print_params(char *params)
 {
-    int	index;
+	int	index;
 
 	index = 0;
-    while (params[index])
+	while (params[index] != '\0')
 	{
-        // printf("%c", params[index]);
-		write (1, params[index], 1);
+		write (1, &params[index], 1);
 		index++;
 	}
-    write (1, "\n", 1);
+	write (1, "\n", 1);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
-	 while (argc > 0)
-     {
-        ft_print_params(argv[1]);
-        argc--;
-     }
+	int	index;
+
+	index = 1;
+	if (argc > 1)
+	{
+		while (index < argc)
+		{
+			ft_print_params(argv[index]);
+			index++;
+		}
+	}
 	return (0);
 }
